@@ -1,6 +1,6 @@
 
 with source as (
-    select * from {{ source('sql_server_dbo', 'users') }}
+    select * from {{ ref('stg_sql_server_dbo__users') }}
 ),
 
 renamed as (
@@ -11,10 +11,10 @@ renamed as (
         , email 
         , phone_number 
         , address_id
-        , created_at                               as created_at_utc
+        , created_at_utc                             
         , updated_at
-        , coalesce(_fivetran_deleted, false)       as is_deleted
-        , _fivetran_synced                         as date_load
+        --, is_deleted
+        , date_load
 
         from source
         where not is_deleted
