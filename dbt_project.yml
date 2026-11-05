@@ -45,7 +45,7 @@ models:
     #     almacenamiento y siempre reflejan Bronze.
     staging:
       +materialized: view
-      +database: DEV_BRONZE_DB
+      +database: DEV_SILVER_DB
       sql_server_dbo:
         +schema: sql_server_dbo
       google_sheets:
@@ -55,7 +55,7 @@ models:
     #     no queremos repetirla en cada consulta.
     silver:
       +materialized: table
-      +database: DEV_BRONZE_DB
+      +database: DEV_SILVER_DB
       sql_server_dbo:
         +schema: sql_server_dbo
       google_sheets:
@@ -65,7 +65,7 @@ models:
     #     prefijo del modelo (dim_, fct_, agg_, int_).
     gold:
       +materialized: table
-      +database: DEV_BRONZE_DB
+      +database: DEV_GOLD_DB
       intermediate:
         +materialized: view
         +schema: intermediate
