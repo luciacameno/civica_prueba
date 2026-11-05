@@ -1,0 +1,23 @@
+
+version: 2
+
+models:
+  - name: slv_google_sheets__budget
+    description: "Modelo silver de presupuestos desde Google Sheets con validaciones de calidad."
+    columns:
+      - name: budget_id 
+        tests:
+          - unique
+          - not_null
+
+      - name: product_id
+        tests:
+          - relationships:
+              to: ref('slv_sql_server_dbo__products')
+              field: product_id
+
+      - name: amount # O la columna numérica que almacene el valor/presupuesto
+        tests:
+          - dbt_utils.accepted_range:
+              min_value: 0
+              inclusive: true
