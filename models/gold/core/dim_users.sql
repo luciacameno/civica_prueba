@@ -10,7 +10,7 @@ with users as (
 ),
 
 addresses as (
-    select * from {{ ref('dim_addresses') }}
+    select * from {{ ref('slv_sql_server_dbo__addresses') }}
 ),
 
 final as (
