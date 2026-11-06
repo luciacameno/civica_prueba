@@ -1,10 +1,3 @@
--- =============================================================================
--- int_orders__enriched
--- =============================================================================
--- Intermedio de Gold: une cada pedido con su dirección y su promoción.
--- No se expone al consumo; lo usa fct_orders. Vive en el schema intermediate.
--- =============================================================================
-
 with orders as (
     select * from {{ ref('slv_sql_server_dbo__orders') }}
 ),
@@ -22,20 +15,20 @@ joined as (
           o.order_id
         , o.user_id
         , o.address_id
-        , a.country                                         as shipping_country
+        , a.country                                     as shipping_country
         , o.promo_id
-        , coalesce(p.discount_usd, 0)                       as discount_usd
-        , coalesce(p.promo_status, 'no_promo')              as promo_status
+        , coalesce(p.discount_usd, 0)                   as discount_usd
+        , coalesce(p.promo_status, 'no_promo')          as promo_status
         , o.created_at_utc
-        , o.estimated_delivery_at_utc
-        , o.delivered_at_utc
-        , datediff('day', o.created_at_utc, o.delivered_at_utc) as days_to_deliver
+        , o.estimated_delivery_at
+        , o.delivered_at
+        , datediff('day', o.created_at_utc, o.delivered_at) as days_to_deliver
         , o.tracking_id
         , o.shipping_service
-        , o.shipping_cost_usd
-        , o.item_order_cost_usd
-        , o.total_order_cost_usd
-        , o.order_status
+        , o.shipping_cost                               as shipping_cost_usd
+        , o.order_cost                                  as item_order_cost_usd
+        , o.order_total                                 as total_order_cost_usd
+        , o.status                                      as order_status
         , o.date_load
     from orders o
     left join addresses a on o.address_id = a.address_id
