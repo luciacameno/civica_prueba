@@ -45,7 +45,7 @@ models:
     #     almacenamiento y siempre reflejan Bronze.
     staging:
       +materialized: view
-      +database: DEV_BRONZE_DB
+      +database: DEV_SILVER_DB
       sql_server_dbo:
         +schema: sql_server_dbo
       google_sheets:
@@ -71,10 +71,16 @@ models:
         +schema: intermediate
       core:
         +schema: core
+        +meta: 
+          owner: core_team
       marketing:
         +schema: marketing
+        +meta: 
+          owner: marketing_team
       product:
         +schema: product
+        +meta: 
+          owner: product_team
 
 # =============================================================================
 # Seeds
@@ -90,3 +96,4 @@ seeds:
         country_code: varchar(2)
         country_name: varchar(100)
         continent: varchar(50)
+
