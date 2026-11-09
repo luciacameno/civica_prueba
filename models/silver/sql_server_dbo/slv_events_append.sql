@@ -1,7 +1,7 @@
 {{
     config(
         materialized='incremental',
-        incremental_strategy='merge',
+        incremental_strategy='append',
         unique_key='event_id',
         on_schema_change='append',
         event_time='created_at_utc'
@@ -25,7 +25,7 @@ with events as (
     select * from {{ ref('stg_sql_server_dbo__events') }}
     where not is_deleted
     {% if is_incremental() %}
-      and date_load > (select dateadd('hour', -1, max(date_load)) from {{ this }})
+      and date_load >= (select dateadd('hour', -1, max(date_load)) from {{ this }}) --se le resta una hora para xrear una ventana de solapamiento : al coger una hora antes evita que nos dejemos algo 
     {% endif %}
 ),
 
