@@ -10,7 +10,8 @@ materialized='incremental',
 incremental_strategy='microbatch',
 event_time='event_at_utc',
 batch_size='month',
-begin='2024-01-01',
+begin='2025-03-01',
+end = '2025-03-30',
 lookback=1
 )
 }}
