@@ -3,7 +3,7 @@
         materialized='incremental',
         incremental_strategy='delete+insert',
         unique_key='event_id',
-        on_schema_change='delete+insert',
+        on_schema_change='append_new_columns',
         event_time='created_at_utc'
     )
 }}
