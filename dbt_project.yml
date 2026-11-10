@@ -46,16 +46,20 @@ models:
     staging:
       +materialized: view
       +database: DEV_SILVER_DB
+      +tags: ['staging']
       sql_server_dbo:
         +schema: sql_server_dbo
       google_sheets:
         +schema: google_sheets
+        
+      
 
     # --- Silver: limpieza y deduplicación. Tablas: la deduplicación es cara y
     #     no queremos repetirla en cada consulta.
     silver:
       +materialized: table
       +database:  DEV_SILVER_DB
+      +tags: ['silver']
      # sql_server_dbo:
        # +schema: sql_server_dbo
       google_sheets:
@@ -65,7 +69,8 @@ models:
     #     prefijo del modelo (dim_, fct_, agg_, int_).
     gold:
       +materialized: table
-      +database: DEV_GOLD_DB 
+      +database: DEV_GOLD_DB
+      +tags: ['gold'] 
       intermediate:
         +materialized: view
         +schema: intermediate
@@ -73,14 +78,17 @@ models:
         +schema: core
         +meta:
           owner: equipo-datos-core
+        +tags: ['core']
       marketing:
         +schema: marketing
         +meta:
           owner: equipo-marketing-analytics
+        +tags: ['marketing']
       product:
         +schema: product
         +meta:
           owner: equipo-producto
+          +tags: ['product']
 
 # =============================================================================
 # Seeds
@@ -111,3 +119,6 @@ snapshots:
 vars :
   low_stock_threshold: 10
   budget_start_date: '2024-01-01'
+
+on-run-end:
+  - "{{ log_run_summary(results) }}"
