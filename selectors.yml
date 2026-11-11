@@ -28,14 +28,3 @@ selectors:
         - exclude:
             - method: resource_type
               value: snapshot
-
-  - name : google_sheets 
-    description : coge todos los google sheets 
-    definition:
-      union:
-          
-        - method: tag
-          value: google_sheets
-        
-        
-        

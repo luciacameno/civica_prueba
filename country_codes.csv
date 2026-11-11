@@ -1,0 +1,61 @@
+country_code,country_name,continent
+AR,Argentina,South America
+AU,Australia,Oceania
+AT,Austria,Europe
+BE,Belgium,Europe
+BO,Bolivia,South America
+BR,Brazil,South America
+CA,Canada,North America
+CL,Chile,South America
+CN,China,Asia
+CO,Colombia,South America
+CR,Costa Rica,North America
+CU,Cuba,North America
+CZ,Czech Republic,Europe
+DK,Denmark,Europe
+DO,Dominican Republic,North America
+DZ,Algeria,Africa
+EC,Ecuador,South America
+EG,Egypt,Africa
+FI,Finland,Europe
+FR,France,Europe
+DE,Germany,Europe
+GR,Greece,Europe
+GT,Guatemala,North America
+HU,Hungary,Europe
+IN,India,Asia
+ID,Indonesia,Asia
+IE,Ireland,Europe
+IL,Israel,Asia
+IT,Italy,Europe
+JP,Japan,Asia
+KE,Kenya,Africa
+KR,South Korea,Asia
+MA,Morocco,Africa
+MX,Mexico,North America
+NL,Netherlands,Europe
+NZ,New Zealand,Oceania
+NG,Nigeria,Africa
+NO,Norway,Europe
+PA,Panama,North America
+PE,Peru,South America
+PH,Philippines,Asia
+PL,Poland,Europe
+PT,Portugal,Europe
+PY,Paraguay,South America
+RO,Romania,Europe
+SA,Saudi Arabia,Asia
+SG,Singapore,Asia
+ZA,South Africa,Africa
+ES,Spain,Europe
+SE,Sweden,Europe
+CH,Switzerland,Europe
+TH,Thailand,Asia
+TN,Tunisia,Africa
+TR,Turkey,Asia
+AE,United Arab Emirates,Asia
+GB,United Kingdom,Europe
+US,United States,North America
+UY,Uruguay,South America
+VE,Venezuela,South America
+VN,Vietnam,Asia
